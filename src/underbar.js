@@ -80,7 +80,7 @@
   // Return all elements of an array that pass a truth test.
     // Create result variable equal to empty array. We will push to this array
     // Loop over the collection
-      // Invoke function
+      // Invoke test function
         // If result is true
           // Push to result array
     // return result array
@@ -96,9 +96,19 @@
   };
 
   // Return all elements of an array that don't pass a truth test.
+    // Create var that uses _.filter to get an array of elements that pass
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    var trueVars = _.filter(collection, test);
+    var collectionCopy = collection.slice();
+    var result = [];
+    for (var i = 0; i < collectionCopy.length; i++) {
+      if (trueVars.includes(collectionCopy[i]) === false) {
+        result.push(collectionCopy[i]);
+      } 
+    } 
+    return result;
   };
 
   // Produce a duplicate-free version of the array.
