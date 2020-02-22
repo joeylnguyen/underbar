@@ -46,18 +46,18 @@
 
       it('should pull the last element from an array', function() {
         expect(_.last([1,2,3])).to.equal(3);
-      });
+      }); // n is undefined so it pulls the last element array[array.length - 1]
 
       it('should accept an index argument', function() {
         expect(_.last([1,2,3], 2)).to.eql([2, 3]);
-      });
+      }); // .slice(1), will pull starting from index 1 to the end of the array
 
       it('should return empty array if zero is passed in as the index', function() {
-        expect(_.last([1,2,3], 0)).to.eql([]);
+        expect(_.last([1,2,3], 0)).to.eql([]); // .slice(3), index 3 doesn't exist so it pulls empty array
       });
 
       it('should return all the array\'s elements if the index argument is larger than the length of the array', function() {
-        expect(_.last([1,2,3], 5)).to.eql([1, 2, 3]);
+        expect(_.last([1,2,3], 5)).to.eql([1, 2, 3]); // .slice(0), so it pulls all elements
       });
     });
 
