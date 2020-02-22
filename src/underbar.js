@@ -47,8 +47,8 @@
   // Note: _.each does not have a return value, but rather simply runs the
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
-    // Iterate when collection is an array or string
-    if (Array.isArray(collection) === true || collection.length !== undefined) {
+    // Iterate when collection is an array
+    if (Array.isArray(collection) === true) {
       for (var i = 0; i < collection.length; i++) {
         iterator(collection[i], i, collection);
       }
