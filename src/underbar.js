@@ -78,7 +78,21 @@
   };
 
   // Return all elements of an array that pass a truth test.
+    // Create result variable equal to empty array. We will push to this array
+    // Loop over the collection
+      // Invoke function
+        // If result is true
+          // Push to result array
+    // return result array
   _.filter = function(collection, test) {
+  var result = [];
+  
+  for (var i = 0; i < collection.length; i++) {
+    if (test(collection[i]) === true) {
+      result.push(collection[i]);
+    }
+  }
+  return result;
   };
 
   // Return all elements of an array that don't pass a truth test.
