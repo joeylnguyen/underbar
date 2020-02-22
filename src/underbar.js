@@ -49,7 +49,7 @@
   _.each = function(collection, iterator) {
     if (Array.isArray(collection) === true) {
       for (var i = 0; i < collection.length; i++) {
-        iterator(collection[i]);
+        iterator(collection[i], i, collection);
       }
     }
   };
