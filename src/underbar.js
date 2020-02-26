@@ -116,12 +116,13 @@
 
   // Produce a duplicate-free version of the array.
   // Create var numsTable = {};
-  // Create var sorted to check if array is sorted
 
-  // If sorted equals true
+  // If sorted
     // Create var resultSorted = [];
     // Loop through the array
-      // 
+      // If the value produced by the iterator function called on the current number is not a property in numsTable
+        // Add the value produced by iterator function to numsTable with value equal to current number
+    // Return Object.values(numsTable)
 
   // If unsorted
     // loop through the array
@@ -131,7 +132,15 @@
 
   _.uniq = function(array, isSorted, iterator) {
     var numsTable = {};
-    var sorted = isSorted;
+
+    if (isSorted) {
+      for (var i = 0; i < array.length; i++) {
+        if (numsTable[iterator(array[i])] === undefined) {
+          numsTable[iterator(array[i])] = array[i];
+        }
+      }
+    return Object.values(numsTable);
+    }
 
     for (var i = 0; i < array.length; i++) {
         if (numsTable[array[i]] === undefined) {
