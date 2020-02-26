@@ -97,22 +97,48 @@
 
   // Return all elements of an array that don't pass a truth test.
     // Create var that uses _.filter to get an array of elements that pass
+    // Create a result var
+    // loop over collection and see if trueVars doesn't have the current element
+      // push current element if false
+    // return result
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
     var trueVars = _.filter(collection, test);
-    var collectionCopy = collection.slice();
     var result = [];
-    for (var i = 0; i < collectionCopy.length; i++) {
-      if (trueVars.includes(collectionCopy[i]) === false) {
-        result.push(collectionCopy[i]);
+    for (var i = 0; i < collection.length; i++) {
+      if (trueVars.includes(collection[i]) === false) {
+        result.push(collection[i]);
       } 
     } 
     return result;
   };
 
   // Produce a duplicate-free version of the array.
+  // Create var numsTable = {};
+  // Create var sorted to check if array is sorted
+
+  // If sorted equals true
+    // Create var resultSorted = [];
+    // Loop through the array
+      // 
+
+  // If unsorted
+    // loop through the array
+      // if current number is not a key in numsTable
+        // add current number to numsTable with itself as a value
+      // return Object.values(numsTable)
+
   _.uniq = function(array, isSorted, iterator) {
+    var numsTable = {};
+    var sorted = isSorted;
+
+    for (var i = 0; i < array.length; i++) {
+        if (numsTable[array[i]] === undefined) {
+          numsTable[array[i]] = array[i];
+        } 
+      }    
+    return Object.values(numsTable);
   };
 
 
