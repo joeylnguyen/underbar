@@ -209,7 +209,30 @@
   //     return total + number * number;
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
+
+
+  // Case 1: accumulator is not passed
+    // if accumulator is undefined
+      // set accumulator to be first element in collection
+      // run a for loop on collection starting at second element
+        // set accumulator equal to be the result of iterator with the previous accumulator value and current element as arguments
+  // Case 2: accumulator is passed
+    //Run a for loop on the collection 
+    // Set accumulator equal to the iterator with accumulator and current element as arguments
+
+
   _.reduce = function(collection, iterator, accumulator) {
+    if (accumulator === undefined) {
+      accumulator = collection[0]
+      for (var i = 1; i < collection.length; i++) {
+        accumulator = iterator(accumulator, collection[i]);
+      }
+    } else {
+      for (var i = 0; i < collection.length; i++) {
+        accumulator = iterator(accumulator, collection[i]);
+      }
+    }
+    return accumulator;
   };
 
   // Determine if the array or object contains a given value (using `===`).
