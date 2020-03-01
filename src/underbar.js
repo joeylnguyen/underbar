@@ -323,7 +323,17 @@
   //   }, {
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
+
+  // loop through second object and add the properties to main object
+  // obj[secondObject[key] = secondObject[key]]
+  // return final obj
   _.extend = function(obj) {
+    _.each(arguments, function(extenderObj) { // loops through the arguments 
+      _.each(extenderObj, function(item, key) { // applies the each function and loops through each of the individual extender objects and adds the properties to the main object
+        obj[key] = item;
+      });
+    });
+  return obj; // each doesn't return anything, so I need to return the final obj
   };
 
   // Like extend, but doesn't ever overwrite a key that already
