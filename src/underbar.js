@@ -165,6 +165,8 @@
     // the members, it also maintains an array of results.
     var result = [];
 
+    var iterator = iterator || _.identity;
+
     for (var i = 0; i < collection.length; i++) {
       result.push(iterator(collection[i]));
     }
@@ -390,6 +392,18 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var resultObject = {};
+
+    // TIP: We'll return a new function that delegates to the old one, but only
+    // if it hasn't been called before.
+    return function() {
+      var argument = JSON.stringify(arguments);
+      if (!resultObject[argument]) {
+        resultObject[argument] = func.apply(this, arguments);
+      }
+      // The new function always returns the originally computed result.
+      return resultObject[argument];
+    };
   };
 
   // Delays a function for the given number of milliseconds, and then calls
@@ -399,6 +413,8 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    
+
   };
 
 
@@ -413,6 +429,10 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var arrayCopy = array.slice();
+    _.each(arrayCopy, function (index) {
+      
+    })
   };
 
 
