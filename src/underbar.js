@@ -431,11 +431,19 @@
   // TIP: This function's test suite will ask that you not modify the original
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
-  _.shuffle = function(array) {
-    var arrayCopy = array.slice();
-    _.each(arrayCopy, function (index) {
-      
-    })
+   _.shuffle = function(array) {
+    var shuffledArray = [];
+    var arrayCopy = Array.prototype.slice.call(array);
+
+    var resultsArray = [];
+
+    for (var i = 0; i < array.length; i++) {
+      var random = Math.floor(Math.random() * arrayCopy.length);
+      resultsArray.push(arrayCopy[random]);
+      arrayCopy.splice(random,1);
+    }
+
+    return resultsArray;
   };
 
 
