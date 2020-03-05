@@ -392,16 +392,17 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    // Create result object that will store results
     var resultObject = {};
 
-    // TIP: We'll return a new function that delegates to the old one, but only
-    // if it hasn't been called before.
+    // Run function that checks if argument is in resultObject
+    // If its not, set the argument in resultobject with value of passed function
     return function() {
       var argument = JSON.stringify(arguments);
       if (!resultObject[argument]) {
         resultObject[argument] = func.apply(this, arguments);
       }
-      // The new function always returns the originally computed result.
+      
       return resultObject[argument];
     };
   };
@@ -413,8 +414,10 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
-    
-
+    var argument = Array.prototype.slice.call(arguments, 2);
+    setTimeout(function() {
+      func.apply(this, argument);
+    }, wait);
   };
 
 
